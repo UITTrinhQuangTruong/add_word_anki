@@ -9,7 +9,6 @@ from src.dictionary import LongMan
 def get_content(dictionary, input_file, save_dir, output_file):
     if dictionary == "longman":
         model = LongMan(dir=save_dir)
-
     else:
         print("--dictionary not available!!!")
         sys.exit(1)
