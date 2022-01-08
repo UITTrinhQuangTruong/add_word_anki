@@ -6,7 +6,7 @@ from src.helper import get_page_content
 
 class LongMan:
     def __init__(self, dir) -> None:
-        self.translate = GoogleTranslator(source="en", target="vi")
+        self.translater = GoogleTranslator(source="en", target="vi")
         self.dir = dir
 
         if not os.path.isdir(dir):

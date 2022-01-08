@@ -129,3 +129,5 @@ dmypy.json
 .pyre/
 
 text.txt
+*.mp3
+*.csv

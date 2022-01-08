@@ -10,6 +10,9 @@ def main():
     parser.add_argument("--save_dir", type=str, default=".")
     parser.add_argument("--output_file", type=str, default="dictionary.csv")
 
-    get_content(
-        parser.dictionary, parser.input_file, parser.save_dir, parser.output_file
-    )
+    args = parser.parse_args()
+    get_content(args.dictionary, args.input_file, args.save_dir, args.output_file)
+
+
+if __name__ == "__main__":
+    main()
