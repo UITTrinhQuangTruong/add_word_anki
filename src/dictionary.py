@@ -1,7 +1,7 @@
 import os
 from deep_translator import GoogleTranslator
 
-from helper import get_page_content
+from src.helper import get_page_content
 
 
 class LongMan:

@@ -3,7 +3,7 @@ import sys
 
 import pandas as pd
 
-from dictionary import LongMan
+from src.dictionary import LongMan
 
 
 def get_content(dictionary, input_file, save_dir, output_file):
@@ -22,7 +22,7 @@ def get_content(dictionary, input_file, save_dir, output_file):
             print(f"{input_file} not exists!!!")
             sys.exit(1)
     else:
-        list_of_words = [input("Type your word:\t")]
+        word = [input("Type your word:\t")]
 
     if os.path.isfile(output_file):
         df = pd.read_csv(output_file, header=None)

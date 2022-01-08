@@ -1,1 +1,1 @@
-from get_content import get_content
+from src.get_content import get_content
