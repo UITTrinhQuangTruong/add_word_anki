@@ -15,8 +15,8 @@ def get_content(dictionary, input_file, save_dir, output_file):
 
     if input_file != None:
         try:
-            with open(input_file, "w") as f:
-                list_of_words = f.read().split("\n")
+            with open(input_file, "r") as f:
+                list_of_words = [i for i in f.read().split("\n") if i != ""]
         except:
             print(f"{input_file} not exists!!!")
             sys.exit(1)
