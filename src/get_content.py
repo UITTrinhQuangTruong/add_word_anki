@@ -29,7 +29,24 @@ def get_content(dictionary, input_file, save_dir, output_file):
     else:
         df = pd.DataFrame(columns=range(5))
 
+    flag = 0
     for word in list_of_words:
+        if word in df[0].values:
+            if flag < 2:
+                print(
+                    f"{word} exists in dictionary! Do you want to replace it? (y, ya, n, na)")
+                ans = input().lower()
+                if ans == "y":
+                    flag = 1
+                elif ans == "ya":
+                    flag = 2
+                elif ans == "na":
+                    flag = 3
+            if flag == 1 or flag == 2:
+                result = model.get_word(word)
+                index = df[0] == word
+                df.loc[index] = [result]
+            continue
         result = model.get_word(word)
         df_length = len(df)
         df.loc[df_length] = result
