@@ -126,6 +126,7 @@ class LongMan:
 
         self._preprocess()
         self._change_voice()
+        self._change_voice(voice="us")
         self._get_examples()
         self._get_suggest()
 
