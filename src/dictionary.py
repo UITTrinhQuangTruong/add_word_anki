@@ -120,7 +120,10 @@ class LongMan:
                 )
 
         def_of_word = self.lm_page_content.find("span", class_="DEF").text
-        self.suggestion = f"<div><span class='english'>{def_of_word} - </span><span class='vietnamese'>{self.translater.translate(def_of_word)}</span></div><div><span class='english'>{example_} - </span><span class='vietnamese'>{self.translater.translate(self.example)}</span></div>"
+        if example_ != "":
+            self.suggestion = f"<div><span class='english'>{def_of_word} - </span><span class='vietnamese'>{self.translater.translate(def_of_word)}</span></div><div><span class='english'>{example_} - </span><span class='vietnamese'>{self.translater.translate(self.example)}</span></div>"
+        else:
+            self.suggestion = f"<div><span class='english'>{def_of_word} - </span><span class='vietnamese'>{self.translater.translate(def_of_word)}</span></div><div>"
 
     def _get_content(self):
 
