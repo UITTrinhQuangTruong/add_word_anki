@@ -42,7 +42,8 @@ class LongMan:
             for i in self.lm_page_content.findAll("span", class_=class_):
                 i.decompose()
 
-        content_of_word = self.lm_page_content.findAll("span", class_="dictlink")
+        content_of_word = self.lm_page_content.findAll(
+            "span", class_="dictlink")
         for i in content_of_word:
             if i.find("span", class_="Sense") == None:
                 i.decompose()
@@ -52,7 +53,8 @@ class LongMan:
             i["href"] = "https://www.ldoceonline.com" + i["href"]
 
     def _change_voice(self, voice="uk"):
-        heads_of_word = self.lm_page_content.findAll("span", class_="frequent Head")
+        heads_of_word = self.lm_page_content.findAll(
+            "span", class_="frequent Head")
 
         class_ = (
             "speaker brefile fas fa-volume-up hideOnAmp"
@@ -64,8 +66,10 @@ class LongMan:
             name_of_file = f"{self.word}_{voice}_{idx}.mp3"
             audio = head.find("span", class_=class_)
             string = f"[sound:{name_of_file}]"
-            os.system(f"wget {audio['data-src-mp3']} -O {name_of_file}")
-            new_tag = self.lm_page_content.new_tag("span", **{"class": "us_au"})
+            os.system(
+                f"wget {audio['data-src-mp3']} -O {os.path.join(self.dir, name_of_file)}")
+            new_tag = self.lm_page_content.new_tag(
+                "span", **{"class": "us_au"})
             new_tag.string = string
             audio.decompose()
             head.append(new_tag)
@@ -78,7 +82,8 @@ class LongMan:
             for j in parent.findChildren("span", class_="EXAMPLE", recursive=False)[1:]:
                 j.decompose()
             idx += 1
-            list_examples = self.lm_page_content.findAll("span", class_="EXAMPLE")
+            list_examples = self.lm_page_content.findAll(
+                "span", class_="EXAMPLE")
 
         # Change link to audio example
         self.example = ""
@@ -93,7 +98,8 @@ class LongMan:
                     self.example = i.text.strip()
 
                 # Download file audio
-                os.system(f"wget {audio['data-src-mp3']} -O {name_of_file}")
+                os.system(
+                    f"wget {audio['data-src-mp3']} -O {os.path.join(self.dir, name_of_file)}")
                 audio.decompose()
                 i.string = string
             except:

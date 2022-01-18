@@ -23,8 +23,9 @@ def get_content(dictionary, input_file, save_dir, output_file):
     else:
         list_of_words = [input("Type your word:\t")]
 
-    if os.path.isfile(output_file):
-        df = pd.read_csv(output_file, header=None)
+    output_path = os.path.join(save_dir, output_file)
+    if os.path.isfile(output_path):
+        df = pd.read_csv(output_path, header=None)
     else:
         df = pd.DataFrame(columns=range(5))
 
@@ -33,4 +34,4 @@ def get_content(dictionary, input_file, save_dir, output_file):
         df_length = len(df)
         df.loc[df_length] = result
 
-    df.to_csv(output_file, header=False, index=False)
+    df.to_csv(output_path, header=False, index=False)
